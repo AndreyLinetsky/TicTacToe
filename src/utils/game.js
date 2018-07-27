@@ -2,7 +2,7 @@ import { CELL_VALUE } from '../constants/game';
 
 const { O, X, NONE } = CELL_VALUE;
 
-export const winningCombinations = [
+const winningCombinations = [
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],

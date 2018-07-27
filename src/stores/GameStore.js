@@ -9,7 +9,7 @@ const initialGameStoreSnapshot = {
   cells: Array(9).fill(NONE)
 };
 
-export const GameStore = types
+const GameStore = types
   .model('GameStore', {
     isXTurn: types.boolean,
     cells: types.array(types.enumeration([X, O, NONE]))
