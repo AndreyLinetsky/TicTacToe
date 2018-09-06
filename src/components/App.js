@@ -21,8 +21,7 @@ export const App = observer(({ store }) => {
   };
   const gameBoardProps = {
     cells,
-    playTurn,
-    isGameOver
+    playTurn
   };
   return (
     <StyledContainer>

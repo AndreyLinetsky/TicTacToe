@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { cellValueColor, cellBorderColor } from '../styles/colors';
 
 const StyledCell = styled.div`
-  ${({ isDisabled }) => (isDisabled ? 'pointer-events: none;' : '')};
   width: 40px;
   height: 40px;
   margin: 1px;
@@ -13,8 +12,11 @@ const StyledCell = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  -webkit-user-select: none;       
+  -moz-user-select: none; 
+  -ms-user-select: none;  
 `;
 
-export function BoardCell({ cellValue, isDisabled, onClick }) {
-  return <StyledCell {...{ isDisabled, onClick }}>{cellValue}</StyledCell>;
+export function BoardCell({ cellValue, onClick }) {
+  return <StyledCell {...{ onClick }}>{cellValue}</StyledCell>;
 }

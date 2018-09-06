@@ -27,6 +27,11 @@ const GameStore = types
   .actions(self => ({
     playTurn(cellIndex) {
       const { isXTurn, cells } = self;
+
+      if (cells[cellIndex] != NONE) {
+        return;
+      }
+
       const newCellValue = isXTurn ? X : O;
       cells[cellIndex] = newCellValue;
 

@@ -17,7 +17,7 @@ const topRowIndexes = [0, 1, 2];
 const middleRowIndexes = [3, 4, 5];
 const bottomRowIndexes = [6, 7, 8];
 
-function getBoardCell({ index, cells, isGameOver, playTurn }) {
+function getBoardCell({ index, cells, playTurn }) {
   const isCellEmpty = cells[index] === CELL_VALUE.NONE;
   const cellValue = isCellEmpty ? '' : cells[index];
   return (
@@ -25,28 +25,26 @@ function getBoardCell({ index, cells, isGameOver, playTurn }) {
       {...{
         key: index,
         cellValue,
-        onClick: () => playTurn(index),
-        isDisabled: isGameOver || !isCellEmpty
+        onClick: () => playTurn(index)
       }}
     />
   );
 }
+
+function GameBoardRow({ indexes, ...gameBoardProps }) {
+  return (
+    <RowContainer>
+      {indexes.map(index => getBoardCell({ index, ...gameBoardProps }))}
+    </RowContainer>
+  );
+}
+
 export function GameBoard({ ...gameBoardProps }) {
   return (
     <GameBoardContainer>
-      <RowContainer>
-        {topRowIndexes.map(index => getBoardCell({ index, ...gameBoardProps }))}
-      </RowContainer>
-      <RowContainer>
-        {middleRowIndexes.map(index =>
-          getBoardCell({ index, ...gameBoardProps })
-        )}
-      </RowContainer>
-      <RowContainer>
-        {bottomRowIndexes.map(index =>
-          getBoardCell({ index, ...gameBoardProps })
-        )}
-      </RowContainer>
+      <GameBoardRow {...{ indexes: topRowIndexes, ...gameBoardProps }} />
+      <GameBoardRow {...{ indexes: middleRowIndexes, ...gameBoardProps }} />
+      <GameBoardRow {...{ indexes: bottomRowIndexes, ...gameBoardProps }} />
     </GameBoardContainer>
   );
 }
